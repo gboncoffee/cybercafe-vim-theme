@@ -38,7 +38,7 @@ let s:green = "#00ee00"
 let s:blue = "#5c5cff"
 let s:yellow = "#eeee00"
 
-if !(has('termguicolors') && &termguicolors)
+if !(has('termguicolors') && &termguicolors) && !has('gui_running')
 	function! s:match_cterm(cterm)
 		let l:c = a:cterm 
 		if a:cterm == s:fg
@@ -94,7 +94,11 @@ else
 	endfunction
 endif
 
-call s:hi("Normal", s:fg, "NONE", "")
+if !has('gui_running')
+	call s:hi("Normal", s:fg, "NONE", "")
+else
+	call s:hi("Normal", s:fg, s:bg, "")
+endif
 call s:hi("Visual", "", s:altbg, "")
 call s:hi("ColorColumn", "", s:altbg, "")
 call s:hi("Cursor", s:bg, s:fg, "")
