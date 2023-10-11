@@ -29,9 +29,14 @@ endif
 let g:colors_name='cybercafe'
 set t_Co=256
 
-let s:fg = "#f0f0f0"
+if exists('g:cybercafe_soft') && g:cybercafe_soft
+	let s:fg = "#f8f8f8"
+	let s:bg = "#202020"
+else
+	let s:fg = "#f0f0f0"
+	let s:bg = "#000000"
+endif
 let s:altfg = "#bbbbbb"
-let s:bg = "#000000"
 let s:altbg = "#444444"
 let s:red = "#ee0000"
 let s:green = "#00ee00"
