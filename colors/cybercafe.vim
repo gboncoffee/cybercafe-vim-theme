@@ -77,6 +77,30 @@ if !(has('termguicolors') && &termguicolors) && !has('gui_running')
 		return l:c
 	endfunction
 
+	if exists('g:cybercafe_light') && g:cybercafe_light
+		function! s:match_cterm(cterm)
+			let l:c = a:cterm 
+			if a:cterm == s:fg
+				let l:c = "Black"
+			elseif a:cterm == s:altfg
+				let l:c = "DarkGray"
+			elseif a:cterm == s:bg
+				let l:c = "White"
+			elseif a:cterm == s:altbg
+				let l:c = "Gray"
+			elseif a:cterm == s:red
+				let l:c = "Red"
+			elseif a:cterm == s:green
+				let l:c = "Green"
+			elseif a:cterm == s:blue
+				let l:c = "Blue"
+			elseif a:cterm == s:yellow
+				let l:c = "Yellow"
+			endif
+			return l:c
+		endfunction
+	endif
+
 	function! s:hi(group, fg, bg, cterm)
 		let l:cmd = ""
 		if a:bg != ""
