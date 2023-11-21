@@ -29,19 +29,30 @@ endif
 let g:colors_name='cybercafe'
 set t_Co=256
 
-if exists('g:cybercafe_soft') && g:cybercafe_soft
-	let s:fg = "#f8f8f8"
-	let s:bg = "#202020"
-else
-	let s:fg = "#f0f0f0"
-	let s:bg = "#000000"
-endif
+let s:fg = "#f0f0f0"
+let s:bg = "#000000"
 let s:altfg = "#bbbbbb"
 let s:altbg = "#444444"
 let s:red = "#ee0000"
 let s:green = "#00ee00"
 let s:blue = "#5c5cff"
 let s:yellow = "#eeee00"
+
+if exists('g:cybercafe_soft') && g:cybercafe_soft
+	let s:fg = "#f8f8f8"
+	let s:bg = "#202020"
+endif
+
+if exists('g:cybercafe_light') && g:cybercafe_light
+	let s:fg = "#000000"
+	let s:bg = "#f0f0f0"
+	let s:altbg = "#bbbbbb"
+	let s:altfg = "#202020"
+	let s:red = "#cc0000"
+	let s:green = "#00cc00"
+	let s:blue = "#3464A3"
+	let s:yellow = "#c07000"
+endif
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running')
 	function! s:match_cterm(cterm)
@@ -139,7 +150,6 @@ call s:hi("SpellLocal", "", s:blue, "")
 call s:hi("StatusLine", s:bg, s:fg, "NONE")
 call s:hi("StatusLineNC", s:altbg, s:altfg, "")
 
-call s:hi("Comment", s:altfg, "", "italic")
 call s:hi("Constant", s:fg, "", "NONE")
 call s:hi("Identifier", s:fg, "", "NONE")
 call s:hi("Statement", s:fg, "", "NONE")
@@ -147,7 +157,6 @@ call s:hi("PreProc", s:fg, "", "")
 call s:hi("Type", s:fg, "", "NONE")
 call s:hi("Special", s:fg, "", "")
 call s:hi("Underlined", s:fg, "", "underline")
-call s:hi("String", s:altfg, "", "")
 call s:hi("Number", s:fg, "", "")
 call s:hi("Boolean", s:fg, "", "")
 call s:hi("Float", s:fg, "", "")
@@ -155,6 +164,13 @@ call s:hi("Function", s:fg, "", "")
 call s:hi("Operator", s:fg, "", "")
 call s:hi("Include", s:fg, "", "")
 call s:hi("Delimiter", s:fg, "", "")
+if exists('g:cybercafe_light') && g:cybercafe_light
+	call s:hi("String", s:yellow, "", "")
+	call s:hi("Comment", s:yellow, "", "italic")
+else
+	call s:hi("String", s:altfg, "", "")
+	call s:hi("Comment", s:altfg, "", "italic")
+endif
 
 hi! link TabLineSel StatusLine
 hi! link StatusLineTerm StatusLine
