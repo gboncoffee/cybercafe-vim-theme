@@ -189,8 +189,8 @@ call s:hi("Operator", s:fg, "", "")
 call s:hi("Include", s:fg, "", "")
 call s:hi("Delimiter", s:fg, "", "")
 if exists('g:cybercafe_light') && g:cybercafe_light
-	call s:hi("String", s:yellow, "", "")
-	call s:hi("Comment", s:yellow, "", "italic")
+	call s:hi("String", s:red, "", "")
+	call s:hi("Comment", s:red, "", "italic")
 else
 	call s:hi("String", s:altfg, "", "")
 	call s:hi("Comment", s:altfg, "", "italic")
