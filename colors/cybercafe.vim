@@ -45,12 +45,12 @@ endif
 
 if exists('g:cybercafe_light') && g:cybercafe_light
 	let s:fg = "#000000"
-	let s:bg = "#f0f0f0"
+	let s:bg = "#ffffeb"
 	let s:altbg = "#bbbbbb"
 	let s:altfg = "#202020"
-	let s:red = "#cc0000"
-	let s:green = "#00cc00"
-	let s:blue = "#3464A3"
+	let s:red = "#880000"
+	let s:green = "#005500"
+	let s:blue = "#1054af"
 	let s:yellow = "#c07000"
 endif
 
@@ -161,7 +161,11 @@ call s:hi("SignColumn", s:fg, "", "")
 call s:hi("Search", s:bg, s:yellow, "")
 call s:hi("CursorLineNR", s:fg, s:altbg, "bold")
 call s:hi("LineNr", s:fg, "", "")
-call s:hi("MatchParen", "", s:altfg, "")
+if exists('g:cybercafe_light') && g:cybercafe_light
+	call s:hi("MatchParen", "", s:altbg, "")
+else
+	call s:hi("MatchParen", "", s:altfg, "")
+endif
 call s:hi("NonText", s:altfg, "", "")
 call s:hi("Pmenu", s:bg, s:altfg, "")
 call s:hi("PmenuSel", s:fg, s:altbg, "")
